@@ -1,7 +1,7 @@
 {
 	"name": "eslintrc",
-	"version": "1.0.0",
-	"description": "Collection of eslint config files for different environments",
+	"version": "0.1.0",
+	"description": "A collection of eslint config files for different environments",
 	"author": "Niklas Gollenstede",
 	"license": "MIT",
 	"repository" : {
