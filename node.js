@@ -4,6 +4,7 @@ const { off, error, warn, unCC, cloneOnto, } = require('./utils');
 
 module.exports = cloneOnto(require('./base'), {
 	globals: {
+		global: false,
 		require: false,
 		exports: false,
 		module: false,

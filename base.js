@@ -35,6 +35,7 @@ module.exports = ({
 		dotLocation: error('property'),
 		noCaller: error(),
 		noCaseDeclarations: error(),
+		noConstantCondition: warn({ checkLoops: false, }),
 		noDivRegex: error(),
 		noExtraLabel: warn(),
 		noGlobalAssign: warn(),
