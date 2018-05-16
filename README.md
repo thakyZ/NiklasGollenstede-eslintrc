@@ -1,4 +1,4 @@
-## A collection of eslint config files for different environments
+## My personal eslint config files for different environments
 
 ## Example setup
 

@@ -1,11 +1,11 @@
 {
 	"name": "eslintrc",
 	"version": "0.1.0",
-	"description": "A collection of eslint config files for different environments",
+	"description": "My personal eslint config files for different environments",
 	"author": "Niklas Gollenstede",
 	"license": "MIT",
-	"repository" : {
-		"type" : "git",
-		"url" : "https://github.com/NiklasGollenstede/eslintrc"
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/NiklasGollenstede/eslintrc"
 	}
 }
