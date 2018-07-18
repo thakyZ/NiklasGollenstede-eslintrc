@@ -5,9 +5,9 @@
 Add a variation of this
 ```json
 "devDependencies": {
-	"babel-eslint": "7.1.1",
-	"eslint": "3.14.1",
-	"eslintrc": "NiklasGollenstede/eslintrc#69b4957"
+	"babel-eslint": "^8.2.6",
+	"eslint": "^5.1.0",
+	"eslintrc": "NiklasGollenstede/eslintrc#88b3327"
 },
 "scripts": {
 	"lint": "eslint --ignore-path .gitignore ."

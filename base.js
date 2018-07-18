@@ -30,7 +30,7 @@ module.exports = ({
 		noTemplateCurlyInString: error(),
 		noUnsafeNegation: error(),
 
-		consistentReturn: error({ treatUndefinedAsUnspecified: true, }),
+		consistentReturn: error({ treatUndefinedAsUnspecified: false, }),
 		curly: error(),
 		dotLocation: error('property'),
 		noCaller: error(),

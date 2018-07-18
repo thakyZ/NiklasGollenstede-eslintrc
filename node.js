@@ -12,6 +12,7 @@ module.exports = cloneOnto(require('./base'), {
 		__filename: false,
 		console: false,
 		process: false,
+		Buffer: false,
 	},
 	rules: unCC({
 		noConsole: warn({ allow: [ 'error', 'warn', 'info', 'debug', ], }),
