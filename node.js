@@ -1,22 +1,14 @@
 'use strict';
 
-const { off, error, warn, unCC, cloneOnto, } = require('./utils');
+const { off, error, unCC, cloneOnto, } = require('./utils');
 
 module.exports = cloneOnto(require('./base'), {
-	globals: {
-		global: false,
-		require: false,
-		exports: false,
-		module: false,
-		__dirname: false,
-		__filename: false,
-		console: false,
-		process: false,
-		Buffer: false,
-	},
+
+	globals: require('globals').node, // see https://github.com/sindresorhus/globals/blob/master/globals.json#L1001
+
 	rules: unCC({
-		noConsole: warn({ allow: [ 'error', 'warn', 'info', 'debug', ], }),
-		strict: error('global'),
-		noImplicitGlobals: off(),
+		strict: error('global'), // require `'use strict';` in the top scope, since it is wrapped in a function anyway
+		noImplicitGlobals: off(), // allow declarations in the top scope, since it is wrapped in a function anyway
 	}),
+
 });

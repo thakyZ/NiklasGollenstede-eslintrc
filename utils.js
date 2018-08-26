@@ -1,3 +1,4 @@
+'use strict';
 
 function off(...args) {
 	return [ 'off', ...args, ];
@@ -11,15 +12,11 @@ function warn(...args) {
 	return [ 'warn', ...args, ];
 }
 
+/// copies the object and unCamelCases the keys of an object (the same transformation done with the keys of an HTMLElements#dataset)
 function unCC(rules) {
-	Object.keys(rules).forEach(key => {
-		const name = key.replace(/(.)([A-Z])/g, (_, $1, $2) => $1 +'-'+ $2.toLowerCase());
-		if (name !== key) {
-			rules[name] = rules[key];
-			delete rules[key];
-		}
-	});
-	return rules;
+	return Object.entries(rules).reduce((o, { 0: key, 1: value, }) => { {
+		o[key.replace(/(.)([A-Z])/g, (_, $1, $2) => $1 +'-'+ $2.toLowerCase())] = value;
+	} return o; }, { });
 }
 
 function cloneOnto(target, source) {

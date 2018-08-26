@@ -3,21 +3,23 @@
 const { off, error, warn, unCC, } = require('./utils');
 
 module.exports = ({
-	extends: 'eslint:recommended',
+
+	extends: undefined, // let's be explicit
+	env: { }, // again, explicit
+
 	parser: 'babel-eslint',
 	parserOptions: {
-		ecmaVersion: 7,
+		ecmaVersion: 9, // 2018
 		sourceType: 'script',
 		ecmaFeatures: {
 			impliedStrict: false,
 		},
 	},
-	env: {
-		es6: true,
-	},
-	globals: {
+
+	globals: Object.assign({
 		console: false,
-	},
+	}, require('globals').es2017), // see https://github.com/sindresorhus/globals/blob/master/globals.json#L165
+
 	rules: unCC({
 		noConsole: warn({ allow: [ 'error', 'warn', 'info', ], }),
 		strict: error(),
@@ -65,4 +67,5 @@ module.exports = ({
 		commaDangle: error({ arrays: 'always', objects: 'always', imports: 'always', exports: 'always', functions: 'ignore', }),
 		noVar: error(),
 	}),
+
 });

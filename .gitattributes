@@ -1,0 +1,6 @@
+
+# treat lock file as binary (no diff, no line count, no EOL normalization)
+package-lock.json binary
+
+# (on windows) ignore line endings of package.json (messed with by npm)
+package.json text eol=lf

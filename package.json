@@ -7,5 +7,18 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/NiklasGollenstede/eslintrc"
+	},
+	"dependencies": {
+		"globals": "^11.7.0"
+	},
+	"devDependencies": {
+		"babel-eslint": "^8.2.6",
+		"eslint": "^5.4.0"
+	},
+	"scripts": {
+		"lint": "eslint --ignore-path .gitignore ."
+	},
+	"eslintConfig": {
+		"extends": "./node.js"
 	}
 }

@@ -1,13 +1,8 @@
 'use strict';
 
-const { off, error, warn, unCC, cloneOnto, } = require('./utils');
+/**
+ * For use in WebExtensions, but the APIs come from a wrapper (compatibility) module,
+ * so there is really no difference to other browser environments.
+ */
 
-module.exports = cloneOnto(require('./base'), {
-	globals: {
-		define: false,
-		// always use local require
-	},
-	rules: unCC({
-		strict: error('function'),
-	}),
-});
+module.exports = require('./browser.js');
