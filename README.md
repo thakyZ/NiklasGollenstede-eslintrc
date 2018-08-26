@@ -18,7 +18,7 @@ Add a variation of this
 "devDependencies": {
 	"babel-eslint": "^8.2.6",
 	"eslint": "^5.4.0",
-	"eslintrc": "NiklasGollenstede/eslintrc#c7cbce2"
+	"eslintrc": "NiklasGollenstede/eslintrc#<commit>"
 },
 "scripts": {
 	"lint": "eslint --ignore-path .gitignore ."
