@@ -1,6 +1,6 @@
 'use strict';
 
-const { off, error, unCC, cloneOnto, } = require('./utils');
+const { off, error, unCC, cloneOnto, } = require('./_utils.js');
 
 module.exports = cloneOnto(require('./base'), {
 

@@ -4,7 +4,7 @@
  * For locations with mixed scripts, e.g. as a "global" fallback, relax some rules.
  */
 
-const { off, /*error,*/ /*warn,*/ unCC, cloneOnto, } = require('./utils');
+const { off, /*error,*/ /*warn,*/ unCC, cloneOnto, } = require('./_utils.js');
 
 module.exports = cloneOnto(require('./base'), {
 

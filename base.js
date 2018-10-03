@@ -1,6 +1,6 @@
 'use strict';
 
-const { off, error, warn, unCC, } = require('./utils');
+const { off, error, warn, unCC, } = require('./_utils.js');
 
 module.exports = ({
 

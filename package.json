@@ -8,17 +8,27 @@
 		"type": "git",
 		"url": "https://github.com/NiklasGollenstede/eslintrc"
 	},
+	"bin": {
+		"eslintrc": "bin/eslintrc"
+	},
 	"dependencies": {
-		"globals": "^11.7.0"
+		"babel-eslint": "10.0.1",
+		"eslint": "5.6.1",
+		"globals": "11.7.0"
 	},
 	"devDependencies": {
-		"babel-eslint": "^8.2.6",
-		"eslint": "^5.4.0"
+		"ghooks": "^2.0.4"
 	},
 	"scripts": {
-		"lint": "eslint --ignore-path .gitignore ."
+		"prepublishOnly": "node -e \"if((/\\r\\n/).test(require('fs').readFileSync('./bin/node-dwe','utf-8'))){throw 'The bin file must not contain any RCLF!';}\"",
+		"lint": "eslintrc --ignore-path .gitignore ."
+	},
+	"config": {
+		"ghooks": {
+			"pre-commit": "npm run lint --silent -- --color"
+		}
 	},
 	"eslintConfig": {
-		"extends": "./node.js"
+		"extends": "./node-js.js"
 	}
 }

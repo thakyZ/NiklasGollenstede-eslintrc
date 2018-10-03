@@ -15,17 +15,21 @@ It's meant to support (and enforce) the most modern version of JS that is curren
 
 Add a variation of this
 ```json
-"devDependencies": {
-	"babel-eslint": "^8.2.6",
-	"eslint": "^5.4.0",
-	"eslintrc": "NiklasGollenstede/eslintrc#<commit>"
-},
-"scripts": {
-	"lint": "eslint --ignore-path .gitignore ."
-},
-"eslintConfig": {
-	"extends": "./node_modules/eslintrc/browser.js"
-}
+	"devDependencies": {
+		"eslintrc": "github:NiklasGollenstede/eslintrc#<commit>",
+		"ghooks": "^2.0.4"
+	},
+	"scripts": {
+		"lint": "eslintrc --ignore-path .gitignore ."
+	},
+	"config": {
+		"ghooks": {
+			"pre-commit": "npm run lint --silent -- --color"
+		}
+	},
+	"eslintConfig": {
+		"extends": "./node_modules/eslintrc/browser.js"
+	}
 ```
 to the `package.json` in the project root and optionally delete the `package-lock.json` there.
 Then install with `npm install` and run with `npm run lint` or use eslint from the cli or an editor.
