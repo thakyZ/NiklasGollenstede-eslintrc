@@ -21,7 +21,7 @@
 	},
 	"scripts": {
 		"prepublishOnly": "node -e \"if((/\\r\\n/).test(require('fs').readFileSync('./bin/node-dwe','utf-8'))){throw 'The bin file must not contain any RCLF!';}\"",
-		"lint": "eslintrc --ignore-path .gitignore ."
+		"lint": "eslint --ignore-path .gitignore ."
 	},
 	"config": {
 		"ghooks": {
