@@ -7,17 +7,14 @@ module.exports = ({
 	extends: undefined, // let's be explicit
 	env: { }, // again, explicit
 
-	parser: 'babel-eslint',
+	parser: '@typescript-eslint/parser',
 	parserOptions: {
-		ecmaVersion: 9, // 2018
-		sourceType: 'script',
-		ecmaFeatures: {
-			impliedStrict: false,
-		},
 	},
 
 	globals: Object.assign({
 		console: false,
+		clearTimeout: false,
+		setTimeout: false,
 	}, require('globals').es2017), // see https://github.com/sindresorhus/globals/blob/master/globals.json#L165
 
 	rules: unCC({ // rules as of 2018-08-26
@@ -39,6 +36,7 @@ module.exports = ({
 		noEmpty: error({ allowEmptyCatch: true, }), // disallow empty block statements (except catch)
 		noEmptyCharacterClass: warn(), // disallow empty character classes in regular expressions
 		noExAssign: off(), // don't disallow reassigning exceptions in catch clauses (as this is only relevant in IE < 8)
+		noShadow: off(), // don't disallow variable declarations from shadowing variables declared in the outer scope
 		noExtraBooleanCast: error(), // disallow unnecessary boolean casts
 		noExtraParens: off(), // don't disallow unnecessary parentheses
 		noExtraSemi: error(), // disallow unnecessary semicolons
@@ -56,7 +54,7 @@ module.exports = ({
 		noUnreachable: error(), // disallow unreachable code after return, throw, continue, and break statements
 		noUnsafeFinally: error(), // disallow control flow statements in finally blocks
 		noUnsafeNegation: error(), // disallow negating the left operand of relational operators (`!` directly in front of first operand of `in` or `instanceof`)
-		requireAtomicUpdates: off(), // disallow assignments that can lead to race conditions due to usage of await or yield
+		requireAtomicUpdates: off(), // disallow assignments that can lead to race conditions due to usage of `await` or `yield`
 		useIsnan: error(), // require calls to isNaN() when checking for NaN
 	//	validJsdoc: error({
 	//		prefer: { returns: 'return', }, // TODO: ...
@@ -65,6 +63,7 @@ module.exports = ({
 	//		requireParamDescription: true, requireReturnDescription: true, requireParamType: true,
 	//	}), // enforce valid JSDoc comments
 		validTypeof: error(), // enforce comparing typeof expressions against valid strings
+		radix: error(), // require Radix Parameter (for `parseInt`)
 
 		// "Best Practices"
 		consistentReturn: error({ treatUndefinedAsUnspecified: false, }), // require return statements to either always or never specify values
@@ -89,6 +88,7 @@ module.exports = ({
 		noRedeclare: error(), // disallow variable redeclaration
 		noReturnAssign: error(), // disallow assignment operators in return statements (ambiguous with `===`)
 		noReturnAwait: error(), // disallow unnecessary return await
+		requireAwait: off(), // disallow async functions which have no await expression
 		noSelfAssign: error(), // disallow assignments where both sides are exactly the same
 		noThrowLiteral: error(), // disallow throwing literals as exceptions
 		noUnusedExpressions: error({ allowShortCircuit: true, allowTernary: true, }), // disallow unused expressions (but `a && b()` or `a ? b() : c()` is ok)
@@ -104,7 +104,7 @@ module.exports = ({
 		// "Variables"
 		noDeleteVar: error(), // disallow deleting variables
 		noUndef: error(), // disallow the use of undeclared variables unless mentioned in /*global */ comments
-		noUndefInit: error(), // disallow initializing variables to undefined
+		noUndefInit: off(), // don't disallow initializing variables to undefined
 		noUnusedVars: warn({ argsIgnorePattern: '^_|^(global|exports|event)$', caughtErrorsIgnorePattern: '^_$', }), // disallow unused variables
 
 		// "Stylistic Issues"
@@ -126,8 +126,10 @@ module.exports = ({
 		preferArrowCallback: error({ allowNamedFunctions: true, }), // require using arrow functions for callbacks
 		preferConst: warn({ destructuring: 'all', }), // require `const` declarations for variables that are never reassigned after declared
 	//	preferDestructuring: error({ array: false, object: true, }), // require destructuring from arrays and/or objects
-		requireYield: error(), // require generator functions to contain `yield`
+		requireYield: off(), // don't require generator functions to contain `yield`
 		restSpreadSpacing: error('never'),
+		preferRestParams: off(), // don't suggest using the rest parameters instead of `arguments`
+		preferSpread: off(), // don't suggest using spread syntax instead of `.apply()`
 	}),
 
 });

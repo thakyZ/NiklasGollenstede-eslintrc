@@ -15,7 +15,7 @@ function warn(...args) {
 /// copies the object and unCamelCases the keys of an object (the same transformation done with the keys of an HTMLElements#dataset)
 function unCC(rules) {
 	return Object.entries(rules).reduce((o, { 0: key, 1: value, }) => { {
-		o[key.replace(/(.)([A-Z])/g, (_, $1, $2) => $1 +'-'+ $2.toLowerCase())] = value;
+		o[key.replace(/^.*[\\/]|(.)([A-Z])/g, ($0, $1, $2) => $1 ? $1 +'-'+ $2.toLowerCase() : $0)] = value;
 	} return o; }, { });
 }
 

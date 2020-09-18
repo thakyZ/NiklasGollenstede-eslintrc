@@ -17,10 +17,11 @@ Add a variation of this
 ```json
 	"devDependencies": {
 		"eslintrc": "github:NiklasGollenstede/eslintrc#<commit>",
+		"@typescript-eslint/eslint-plugin": "^4.1.1",
 		"ghooks": "^2.0.4"
 	},
 	"scripts": {
-		"lint": "eslintrc --ignore-path .gitignore ."
+		"lint": "eslintrc --ignore-path .gitignore --ext=.js,.ts ."
 	},
 	"config": {
 		"ghooks": {
@@ -28,11 +29,13 @@ Add a variation of this
 		}
 	},
 	"eslintConfig": {
-		"extends": "./node_modules/eslintrc/browser.js"
+		"extends": "./node_modules/eslintrc/typescript.js",
+		"root": true
 	}
 ```
 to the `package.json` in the project root and optionally delete the `package-lock.json` there.
-Then install with `npm install` and run with `npm run lint` or use eslint from the cli or an editor.
+Then install with `npm install` and run with `npm run lint` or use eslint from a terminal or editor.
+Not that the dependency on `@typescript-eslint/eslint-plugin` is only required for linting TypeScript with `typescript.js`, and is due to eslint's strange plugin resolution.
 
 
 ## Environments
@@ -42,5 +45,6 @@ Then install with `npm install` and run with `npm run lint` or use eslint from t
  * `node.js`: Some additional rules and globals for `node.js` scripts.
  * `browser.js`: Adjustments for a (modern) browser environment. Does not define many global variables.
  * `web-ext.js`: meant for WebExtensions. Currently the same as the browser configuration.
+ * `typescript.js`: For linting TypeScript (and JavaScript).
 
-`utils.js` just contains some ... well utilities to write down the rules a bit more clearly.
+`_utils.js` just contains some ... well utilities to write down the rules a bit more clearly.

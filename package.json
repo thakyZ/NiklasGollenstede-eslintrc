@@ -12,15 +12,16 @@
 		"eslintrc": "bin/eslintrc"
 	},
 	"dependencies": {
-		"babel-eslint": "10.0.1",
-		"eslint": "5.6.1",
-		"globals": "11.7.0"
+		"@typescript-eslint/eslint-plugin": "^4.1.1",
+		"@typescript-eslint/parser": "^4.1.1",
+		"eslint": "^7.9.0",
+		"globals": "^11.12.0"
 	},
 	"devDependencies": {
 		"ghooks": "^2.0.4"
 	},
 	"scripts": {
-		"prepublishOnly": "node -e \"if((/\\r\\n/).test(require('fs').readFileSync('./bin/node-dwe','utf-8'))){throw 'The bin file must not contain any RCLF!';}\"",
+		"prepublishOnly": "node -e \"if((/\\r\\n/).test(require('fs').readFileSync('./bin/eslintrc','utf-8'))){throw 'The bin file must not contain any CRLF!';}\"",
 		"lint": "eslint --ignore-path .gitignore ."
 	},
 	"config": {
@@ -29,6 +30,7 @@
 		}
 	},
 	"eslintConfig": {
-		"extends": "./node-js.js"
+		"extends": "./node-js.js",
+		"root": true
 	}
 }
