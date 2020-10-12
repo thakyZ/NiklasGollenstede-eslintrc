@@ -85,7 +85,7 @@ module.exports = ({
 		noOctal: error(), // disallow octal literals
 		noOctalEscape: error(), // disallow octal escape sequences in string literals
 		noProto: error(), // disallow the use of the __proto__ property (bit in object literals it is ok)
-		noRedeclare: error(), // disallow variable redeclaration
+		noRedeclare: error({ builtinGlobals: false, }), // disallow variable redeclaration
 		noReturnAssign: error(), // disallow assignment operators in return statements (ambiguous with `===`)
 		noReturnAwait: error(), // disallow unnecessary return await
 		requireAwait: off(), // disallow async functions which have no await expression
