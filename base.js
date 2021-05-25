@@ -15,7 +15,7 @@ module.exports = ({
 		console: false,
 		clearTimeout: false,
 		setTimeout: false,
-	}, require('globals').es2017), // see https://github.com/sindresorhus/globals/blob/master/globals.json#L165
+	}, require('globals').builtin), // see https://github.com/sindresorhus/globals/blob/master/globals.json#L165
 
 	rules: unCC({ // rules as of 2018-08-26
 

@@ -12,11 +12,11 @@
 		"eslintrc": "bin/eslintrc"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "^4.1.1",
-		"@typescript-eslint/parser": "^4.1.1",
-		"eslint": "^7.9.0",
-		"globals": "^11.12.0",
-		"typescript": "^4.0.2"
+		"@typescript-eslint/eslint-plugin": "^4.25.0",
+		"@typescript-eslint/parser": "^4.25.0",
+		"eslint": "^7.27.0",
+		"globals": "^13.8.0",
+		"typescript": "^4.2.4"
 	},
 	"devDependencies": {
 		"ghooks": "^2.0.4"
