@@ -9,6 +9,7 @@ module.exports = ({
 
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
+		extraFileExtensions: [ ".cjs", ".mjs", ".jsm", ],
 	},
 
 	globals: Object.assign({
