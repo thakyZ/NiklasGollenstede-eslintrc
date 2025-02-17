@@ -1,22 +1,21 @@
-'use strict';
+import { off, error, warn, unCC, } from './_utils.js';
+import globals from 'globals';
+import eslintTs from 'typescript-eslint';
 
-const { off, error, warn, unCC, } = require('./_utils.js');
+export default ({
 
-module.exports = ({
+	languageOptions: {
+		parser: eslintTs.parser,
+		parserOptions: {
+			extraFileExtensions: [ ".cjs", ".mjs", ".jsm", ],
+		},
 
-	extends: undefined, // let's be explicit
-	env: { }, // again, explicit
-
-	parser: '@typescript-eslint/parser',
-	parserOptions: {
-		extraFileExtensions: [ ".cjs", ".mjs", ".jsm", ],
+		globals: Object.assign({
+			console: false,
+			clearTimeout: false,
+			setTimeout: false,
+		}, globals.builtin), // see https://github.com/sindresorhus/globals/blob/master/globals.json#L165
 	},
-
-	globals: Object.assign({
-		console: false,
-		clearTimeout: false,
-		setTimeout: false,
-	}, require('globals').builtin), // see https://github.com/sindresorhus/globals/blob/master/globals.json#L165
 
 	rules: unCC({ // rules as of 2018-08-26
 

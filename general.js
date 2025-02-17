@@ -1,17 +1,19 @@
-'use strict';
-
 /**
  * For locations with mixed scripts, e.g. as a "global" fallback, relax some rules.
  */
 
-const { off, /*error,*/ /*warn,*/ unCC, cloneOnto, } = require('./_utils.js');
+import { off, /*error,*/ /*warn,*/ unCC, cloneOnto, } from './_utils.js';
+import base from './base.js';
+import globals from 'globals';
 
-module.exports = cloneOnto(require('./base'), {
+const _export = cloneOnto(base, {
 
-	globals: Object.assign({
-		// declare browser stuff explicitly
-		// nothing else
-	}, require('globals').node), // they are all pretty unlikely to be used unintentionally, see https://github.com/sindresorhus/globals/blob/master/globals.json#L1145
+	languageOptions: {
+		globals: Object.assign({
+			// declare browser stuff explicitly
+			// nothing else
+		}, globals.node), // they are all pretty unlikely to be used unintentionally, see https://github.com/sindresorhus/globals/blob/master/globals.json#L1145
+	},
 
 	rules: unCC({
 		noConsole: off(),
@@ -20,3 +22,5 @@ module.exports = cloneOnto(require('./base'), {
 	}),
 
 });
+
+export default _export;

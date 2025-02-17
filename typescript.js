@@ -1,19 +1,22 @@
-'use strict';
+import { off, error, warn, cloneOnto, } from './_utils.js';
+import base from './base.js';
+import eslintTs from 'typescript-eslint';
 
-const { off, error, warn, cloneOnto, } = require('./_utils.js');
+const _export = [cloneOnto(base, {
 
-module.exports = cloneOnto(require('./base'), {
-
-	parser: '@typescript-eslint/parser',
-	parserOptions: {
-		project: './tsconfig.json',
-		tsconfigRootDir: process.cwd(),
+	languageOptions: {
+		parser: eslintTs.parser,
+		parserOptions: {
+			project: './tsconfig.json',
+			tsconfigRootDir: process.cwd(),
+		},
+		plugins: [
+			eslintTs.plugin,
+		],
 	},
-	plugins: [
-		'@typescript-eslint',
-	],
 
-	overrides: [ { // TypeScript specific rules
+	}),
+	{ // TypeScript specific rules
 		files: [ '*.ts', '*.tsx', ],
 		rules: {
 
@@ -84,6 +87,6 @@ module.exports = cloneOnto(require('./base'), {
 
 		//	'@typescript-eslint/no-non-null-asserted-optional-chain': error(), // this causes a live-lock or infinite loop
 		},
-	}, ],
-
-});
+	},
+];
+export default _export;

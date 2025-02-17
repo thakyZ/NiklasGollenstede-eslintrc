@@ -1,16 +1,14 @@
-'use strict';
+import { /*off,*/ error, /*warn,*/ unCC, cloneOnto, } from './_utils.js';
 
-const { /*off,*/ error, /*warn,*/ unCC, cloneOnto, } = require('./_utils.js');
+const _export = cloneOnto(require('./base'), {
 
-module.exports = cloneOnto(require('./base'), {
-
-	env: { }, // declare the globals explicitly (avoid `name` and stuff like that)
-
-	globals: {
-		define: false,
-		// always use local require
-		document: false,
-		location: false,
+	languageOptions: {
+		globals: {
+			define: false,
+			// always use local require
+			document: false,
+			location: false,
+		},
 	},
 
 	rules: unCC({
@@ -18,3 +16,4 @@ module.exports = cloneOnto(require('./base'), {
 	}),
 
 });
+export default _export;

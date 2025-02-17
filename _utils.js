@@ -1,5 +1,3 @@
-'use strict';
-
 function off(...args) {
 	return [ 'off', ...args, ];
 }
@@ -51,4 +49,4 @@ function checkNativeType(object, constructorName) {
 	return Object.prototype.toString.call(object).indexOf(constructorName, 8) === 8;
 }
 
-module.exports = { off, error, warn, unCC, cloneOnto, };
+export { off, error, warn, unCC, cloneOnto, };

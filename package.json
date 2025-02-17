@@ -8,21 +8,19 @@
 		"type": "git",
 		"url": "https://github.com/NiklasGollenstede/eslintrc"
 	},
+	"type": "module",
 	"bin": {
 		"eslintrc": "bin/eslintrc"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "^5.9.0",
-		"@typescript-eslint/parser": "^5.9.0",
-		"eslint": "^8.6.0",
-		"globals": "^13.12.0",
-		"typescript": "^4.5.4"
-	},
-	"devDependencies": {
-		"ghooks": "^2.0.4"
+		"@eslint/js": "^9.20.0",
+		"eslint": "^9.20.1",
+		"globals": "^15.15.0",
+		"typescript": "^5.7.3",
+		"typescript-eslint": "^8.24.0"
 	},
 	"scripts": {
-		"prepublishOnly": "node -e \"if((/\\r\\n/).test(require('fs').readFileSync('./bin/eslintrc','utf-8'))){throw 'The bin file must not contain any CRLF!';}\"",
+		"prepublishOnly": "node -e \"import fs from 'fs';if((/\\r\\n/).test(fs.readFileSync('./bin/eslintrc','utf-8'))){throw 'The bin file must not contain any CRLF!';}\"",
 		"lint": "eslint --ignore-path .gitignore ."
 	},
 	"config": {
@@ -30,8 +28,7 @@
 			"pre-commit": "npm run lint --silent -- --color"
 		}
 	},
-	"eslintConfig": {
-		"extends": "./node-js.js",
-		"root": true
+	"devDependencies": {
+		"ghooks": "^2.0.4"
 	}
 }
