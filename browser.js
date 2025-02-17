@@ -1,6 +1,7 @@
 import { /*off,*/ error, /*warn,*/ unCC, cloneOnto, } from './_utils.js';
+import base from './base.js';
 
-const _export = cloneOnto(require('./base'), {
+const _export = cloneOnto(base, {
 
 	languageOptions: {
 		globals: {
